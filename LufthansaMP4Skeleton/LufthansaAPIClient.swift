@@ -21,7 +21,7 @@ class LufthansaAPIClient {
     static func getAuthToken(completion: @escaping () -> ()){
         
         //This is the information that will be sent to the server to authenticate our device
-        let requestURL = "https://api.lufthansa.com/v1/references/"
+        let requestURL = "" //FIXME
         let parameters = ["":""] //FIXME
         
         //GET RID OF THIS
