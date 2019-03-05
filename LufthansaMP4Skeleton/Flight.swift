@@ -7,7 +7,13 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Flight {
-    //FIXME
+    
+    var timeStatus: String!
+    
+    init(data: JSON) {
+        timeStatus = data["FlightStatusResource"]["Flights"]["Flight"]["Departure"]["TimeStatus"]["Definition"].stringValue
+    }
 }

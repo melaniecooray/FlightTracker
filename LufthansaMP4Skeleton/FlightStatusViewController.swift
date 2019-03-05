@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FlightStatusViewController: UIViewController {
 
     var image: UIImageView!
     var label: UILabel!
@@ -50,8 +50,8 @@ class ViewController: UIViewController {
         
         //Gets new auth token and then gets flight status once that is successful
         LufthansaAPIClient.getAuthToken() {
-            LufthansaAPIClient.getFlightStatus(flightNum: "LH001", date: "2018-10-04") { flt in
-                self.label.text = "fix the thing you dummy"
+            LufthansaAPIClient.getFlightStatus(flightNum: "LH5771", date: "2019-03-02") { flt in
+                self.label.text = flt.timeStatus
                 self.animateImage()
             }
         }
