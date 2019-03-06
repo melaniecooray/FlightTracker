@@ -65,11 +65,56 @@ class LufthansaAPIClient {
          }
          //Creates JSON object
          let json = JSON(response.result.value) //FIXME
-         print(json)
+         //print(json)
          //Create new flight model and populate data
          let flight = Flight(data: json)
          //FIXME
          completion(flight)
          }
+    }
+    
+    static func getAirport(airportCode: String, completion: @escaping (Airport) -> ()) {
+        let requestURL = "https://api.lufthansa.com/v1/references/airports/\(airportCode)?lang=en"
+        let parameters: HTTPHeaders = ["Accept":"application/json", "Authorization" : "Bearer \(self.authToken!)"]
+        
+        Alamofire.request(requestURL, headers: parameters).responseJSON { response in
+            //Makes sure that response is valid
+            guard response.result.isSuccess else {
+                print(response.result.error.debugDescription)
+                return
+            }
+            //Creates JSON object
+            let json = JSON(response.result.value) //FIXME
+            //print(json)
+            //Create new airport model and populate data
+            let data = json["AirportResource"]["Airports"]["Airport"]
+            let airport = Airport(data: data)
+            //FIXME
+            completion(airport)
+        }
+    }
+    
+    static func getLHAirports(completion: @escaping ([Airport]) -> ()) {
+        let requestURL = "https://api.lufthansa.com/v1/references/airports/?lang=en&limit=100&LHoperated=1"
+        let parameters: HTTPHeaders = ["Accept":"application/json", "Authorization" : "Bearer \(self.authToken!)"]
+        
+        Alamofire.request(requestURL, headers: parameters).responseJSON { response in
+            //Makes sure that response is valid
+            guard response.result.isSuccess else {
+                print(response.result.error.debugDescription)
+                return
+            }
+            //Creates JSON object
+            let json = JSON(response.result.value) //FIXME
+            //print(json)
+            //Create new airport model and populate data
+            let airports = json["AirportResource"]["Airports"]["Airport"].arrayValue
+            var returnAirports: [Airport] = []
+            for i in 0..<airports.count {
+                returnAirports.append(Airport(data: airports[i]))
+            }
+            //FIXME
+            completion(returnAirports)
+        }
     }
 }

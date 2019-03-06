@@ -75,16 +75,16 @@
                     <tabBarItem key="tabBarItem" title="Flight Status" image="flightStatus" id="4H3-zt-TGg"/>
                     <navigationItem key="navigationItem" id="wzs-mH-tEA"/>
                     <connections>
-                        <segue destination="4Qm-fB-4UO" kind="show" id="YZE-S5-Pwi"/>
+                        <segue destination="4Qm-fB-4UO" kind="show" identifier="toFlightInformation" id="YZE-S5-Pwi"/>
                     </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="575" y="-743"/>
         </scene>
-        <!--View Controller-->
+        <!--Flight Information View Controller-->
         <scene sceneID="30G-1x-e6N">
             <objects>
-                <viewController id="4Qm-fB-4UO" sceneMemberID="viewController">
+                <viewController id="4Qm-fB-4UO" customClass="FlightInformationViewController" customModule="LufthansaMP4Skeleton" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KQa-G1-DiA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

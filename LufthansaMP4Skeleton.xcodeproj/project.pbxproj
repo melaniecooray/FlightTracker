@@ -11,6 +11,11 @@
 		7B4F806D222B5B5A0044B9BC /* AirportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F806C222B5B5A0044B9BC /* AirportsViewController.swift */; };
 		7B4F806F222B5D230044B9BC /* FlightStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F806E222B5D230044B9BC /* FlightStatusViewController.swift */; };
 		7B4F8071222DF2E70044B9BC /* FlightStatusViewController-uisetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8070222DF2E70044B9BC /* FlightStatusViewController-uisetup.swift */; };
+		7B4F8073222E0D110044B9BC /* FlightInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8072222E0D110044B9BC /* FlightInformationViewController.swift */; };
+		7B4F8075222E7F8A0044B9BC /* FlightInformationViewController-uisetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8074222E7F8A0044B9BC /* FlightInformationViewController-uisetup.swift */; };
+		7B4F8077222F31FE0044B9BC /* FlightInformationViewController-map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8076222F31FE0044B9BC /* FlightInformationViewController-map.swift */; };
+		7B4F8079222F32460044B9BC /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8078222F32460044B9BC /* Airport.swift */; };
+		7B4F807B222F592C0044B9BC /* AirportsViewController-map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F807A222F592C0044B9BC /* AirportsViewController-map.swift */; };
 		9F4CF6B3222A7BB700B8E242 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CF6B2222A7BB700B8E242 /* AppDelegate.swift */; };
 		9F4CF6B8222A7BB700B8E242 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F4CF6B6222A7BB700B8E242 /* Main.storyboard */; };
 		9F4CF6BA222A7BB800B8E242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F4CF6B9222A7BB800B8E242 /* Assets.xcassets */; };
@@ -26,6 +31,11 @@
 		7B4F806C222B5B5A0044B9BC /* AirportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AirportsViewController.swift; path = AirportsViewController/AirportsViewController.swift; sourceTree = "<group>"; };
 		7B4F806E222B5D230044B9BC /* FlightStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlightStatusViewController.swift; path = FlightStatusViewController/FlightStatusViewController.swift; sourceTree = "<group>"; };
 		7B4F8070222DF2E70044B9BC /* FlightStatusViewController-uisetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FlightStatusViewController-uisetup.swift"; path = "FlightStatusViewController/FlightStatusViewController-uisetup.swift"; sourceTree = "<group>"; };
+		7B4F8072222E0D110044B9BC /* FlightInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlightInformationViewController.swift; path = FlightStatusViewController/FlightInformationViewController.swift; sourceTree = "<group>"; };
+		7B4F8074222E7F8A0044B9BC /* FlightInformationViewController-uisetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FlightInformationViewController-uisetup.swift"; path = "FlightStatusViewController/FlightInformationViewController-uisetup.swift"; sourceTree = "<group>"; };
+		7B4F8076222F31FE0044B9BC /* FlightInformationViewController-map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FlightInformationViewController-map.swift"; path = "FlightStatusViewController/FlightInformationViewController-map.swift"; sourceTree = "<group>"; };
+		7B4F8078222F32460044B9BC /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
+		7B4F807A222F592C0044B9BC /* AirportsViewController-map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AirportsViewController-map.swift"; path = "AirportsViewController/AirportsViewController-map.swift"; sourceTree = "<group>"; };
 		9F4CF6AF222A7BB700B8E242 /* LufthansaMP4Skeleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LufthansaMP4Skeleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4CF6B2222A7BB700B8E242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F4CF6B7222A7BB700B8E242 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,8 +95,13 @@
 				9F4CF6C6222A7C4300B8E242 /* Flight.swift */,
 				9F4CF6C4222A7BF000B8E242 /* LufthansaAPIClient.swift */,
 				9F4CF6B6222A7BB700B8E242 /* Main.storyboard */,
+				7B4F8072222E0D110044B9BC /* FlightInformationViewController.swift */,
+				7B4F8074222E7F8A0044B9BC /* FlightInformationViewController-uisetup.swift */,
+				7B4F8076222F31FE0044B9BC /* FlightInformationViewController-map.swift */,
+				7B4F8078222F32460044B9BC /* Airport.swift */,
 				7B4F806A222B5B300044B9BC /* FavoritesViewController.swift */,
 				7B4F806C222B5B5A0044B9BC /* AirportsViewController.swift */,
+				7B4F807A222F592C0044B9BC /* AirportsViewController-map.swift */,
 				9F4CF6B9222A7BB800B8E242 /* Assets.xcassets */,
 				9F4CF6BB222A7BB800B8E242 /* LaunchScreen.storyboard */,
 				9F4CF6BE222A7BB800B8E242 /* Info.plist */,
@@ -226,11 +241,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B4F806F222B5D230044B9BC /* FlightStatusViewController.swift in Sources */,
+				7B4F8075222E7F8A0044B9BC /* FlightInformationViewController-uisetup.swift in Sources */,
 				9F4CF6C5222A7BF000B8E242 /* LufthansaAPIClient.swift in Sources */,
 				9F4CF6C7222A7C4300B8E242 /* Flight.swift in Sources */,
+				7B4F8073222E0D110044B9BC /* FlightInformationViewController.swift in Sources */,
 				7B4F806B222B5B300044B9BC /* FavoritesViewController.swift in Sources */,
+				7B4F807B222F592C0044B9BC /* AirportsViewController-map.swift in Sources */,
 				7B4F8071222DF2E70044B9BC /* FlightStatusViewController-uisetup.swift in Sources */,
 				7B4F806D222B5B5A0044B9BC /* AirportsViewController.swift in Sources */,
+				7B4F8079222F32460044B9BC /* Airport.swift in Sources */,
+				7B4F8077222F31FE0044B9BC /* FlightInformationViewController-map.swift in Sources */,
 				9F4CF6B3222A7BB700B8E242 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

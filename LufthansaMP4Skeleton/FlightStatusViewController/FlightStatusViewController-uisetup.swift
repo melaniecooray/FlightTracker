@@ -16,14 +16,16 @@ extension FlightStatusViewController {
         image.image = UIImage(named: "plane")
         view.addSubview(image)
         
+        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 139/255, alpha: 1)
+        
         setupFlightNumber()
         setupDatePicker()
         setupButton()
     }
     
     func setupFlightNumber() {
-        flightNumberTextField = UITextField(frame: CGRect(x: 0, y: 0, width: view.frame.width - 100, height: 100))
-        flightNumberTextField.center = CGPoint(x: view.frame.width/2, y: 300)
+        flightNumberTextField = UITextField(frame: CGRect(x: 0, y: 0, width: view.frame.width - 100, height: 50))
+        flightNumberTextField.center = CGPoint(x: view.frame.width/2, y: 250)
         flightNumberTextField.placeholder = "Flight Number"
         flightNumberTextField.adjustsFontSizeToFitWidth = true
         flightNumberTextField.layer.cornerRadius = 10
@@ -35,7 +37,7 @@ extension FlightStatusViewController {
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.frame = CGRect(x: 0, y: 0, width: view.frame.width - 50, height: 200)
-        datePicker.center = CGPoint(x: view.frame.width/2, y: flightNumberTextField.frame.maxY + 100)
+        datePicker.center = CGPoint(x: view.frame.width/2, y: flightNumberTextField.frame.maxY + 150)
         datePicker.timeZone = NSTimeZone.local
         datePicker.backgroundColor = .white
         datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
