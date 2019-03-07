@@ -67,7 +67,8 @@ class LufthansaAPIClient {
          let json = JSON(response.result.value) //FIXME
          //print(json)
          //Create new flight model and populate data
-         let flight = Flight(data: json)
+         let data = json["FlightStatusResource"]["Flights"]["Flight"]
+         let flight = Flight(data: data)
          //FIXME
          completion(flight)
          }
@@ -117,4 +118,50 @@ class LufthansaAPIClient {
             completion(returnAirports)
         }
     }
+    
+    static func getFlightsFrom(type: String, airportCode: String, currentDate: String, completion: @escaping ([Flight]) -> ()) {
+        let requestURL = "https://api.lufthansa.com/v1/operations/flightstatus/\(type)/\(airportCode)/\(currentDate)"
+        //print(requestURL)
+        let parameters: HTTPHeaders = ["Accept":"application/json", "Authorization" : "Bearer \(self.authToken!)"]
+        
+        Alamofire.request(requestURL, headers: parameters).responseJSON { response in
+            //Makes sure that response is valid
+            guard response.result.isSuccess else {
+                print(response.result.error.debugDescription)
+                return
+            }
+            //Creates JSON object
+            let json = JSON(response.result.value) //FIXME
+            //print(json)
+            //Create new airport model and populate data
+            let flights = json["FlightStatusResource"]["Flights"]["Flight"].arrayValue
+            var returnFlights: [Flight] = []
+            for i in 0..<flights.count {
+                returnFlights.append(Flight(data: flights[i]))
+            }
+            //FIXME
+            completion(returnFlights)
+        }
+    }
+    
+    static func getAircraft(type: String, completion: @escaping (Aircraft) -> ()) {
+        let requestURL = "https://api.lufthansa.com/v1/references/aircraft/\(type)"
+        //print(requestURL)
+        let parameters: HTTPHeaders = ["Accept":"application/json", "Authorization" : "Bearer \(self.authToken!)"]
+        
+        Alamofire.request(requestURL, headers: parameters).responseJSON { response in
+            //Makes sure that response is valid
+            guard response.result.isSuccess else {
+                print(response.result.error.debugDescription)
+                return
+            }
+            //Creates JSON object
+            let json = JSON(response.result.value) //FIXME
+            //print(json)
+            //Create new airport model and populate data
+            //FIXME
+            completion(Aircraft(data: json))
+        }
+    }
+    
 }

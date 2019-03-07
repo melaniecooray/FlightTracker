@@ -19,18 +19,26 @@ class FlightStatusViewController: UIViewController {
     var datePicker: UIDatePicker!
     var selectedDate: String!
     
+    var loadingScreen: UIView!
+    var loadingText: UILabel!
+    
     var flight: Flight!
     var originAirport: Airport!
     var destinationAirport: Airport!
+    var aircraft: Aircraft!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        UserDefaults.standard.set(0, forKey: "favoritesCount")
         initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+        if loadingScreen != nil {
+            loadingScreen.removeFromSuperview()
+            loadingText.removeFromSuperview()
+        }
     }
     
     func animateImage(){
@@ -48,21 +56,37 @@ class FlightStatusViewController: UIViewController {
             showError(title: "Information Missing", message: "No Flight Number Entered.")
             return
         }
+        
+        self.loadingScreen = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        self.loadingScreen.backgroundColor = .white
+        self.view.addSubview(self.loadingScreen)
+        self.loadingText = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
+        self.loadingText.center = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
+        self.loadingText.text = "Loading..."
+        self.loadingText.textAlignment = .center
+        self.view.addSubview(self.loadingText)
     
         LufthansaAPIClient.getAuthToken() {
             LufthansaAPIClient.getFlightStatus(flightNum: "\(flightNumber)", date: "\(self.selectedDate!)") { flt in
-                print(flt.timeStatus)
+                //print(flt.timeStatus)
                 //self.label.text = flt.timeStatus
                 self.flight = flt
                 LufthansaAPIClient.getAirport(airportCode: self.flight.originAirport!) { air in
                     self.originAirport = air
-                    print(air.title)
-                    print(air.coordinate)
+                    self.flight.originAirportObject = air
+                    //print(air.title)
+                    //print(air.coordinate)
                     LufthansaAPIClient.getAirport(airportCode: self.flight.destinationAirport!) { air in
                         self.destinationAirport = air
-                        print(air.title)
-                        print(air.coordinate)
-                        self.performSegue(withIdentifier: "toFlightInformation", sender: self)
+                        self.flight.destinationAirportObject = air
+                        //print(air.title)
+                        //print(air.coordinate)
+                        LufthansaAPIClient.getAircraft(type: self.flight.aircraft!) { craft in
+                            self.aircraft = craft
+                            self.flight.aircraftObject = self.aircraft
+                            print(self.flight.aircraftObject)
+                            self.performSegue(withIdentifier: "toFlightInformation", sender: self)
+                        }
                     }
                 }
             }
@@ -88,6 +112,8 @@ class FlightStatusViewController: UIViewController {
             resultVC.flight = flight
             resultVC.originAirport = originAirport
             resultVC.destinationAirport = destinationAirport
+            resultVC.date = selectedDate
+            resultVC.aircraft = aircraft
         }
     }
     

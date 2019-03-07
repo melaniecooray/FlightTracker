@@ -24,14 +24,26 @@ class Flight {
     var originGate: String!
     var destinationGate: String!
     
+    var airline: String!
+    var aircraft: String!
+    
+    var favorite: Bool!
+    var aircraftObject: Aircraft!
+    var originAirportObject: Airport!
+    var destinationAirportObject: Airport!
+    
     init(data: JSON) {
-        flightNumber = data["FlightStatusResource"]["Flights"]["Flight"]["MarketingCarrier"]["FlightNumber"].stringValue
-        timeStatus = data["FlightStatusResource"]["Flights"]["Flight"]["Departure"]["TimeStatus"]["Definition"].stringValue
+        airline = data["MarketingCarrier"]["AirlineID"].stringValue
+        aircraft = data["Equipment"]["AircraftCode"].stringValue
+        flightNumber = data["MarketingCarrier"]["FlightNumber"].stringValue
+        timeStatus = data["Departure"]["TimeStatus"]["Definition"].stringValue
         
-        departureTime = data["FlightStatusResource"]["Flights"]["Flight"]["Departure"]["ScheduledTimeLocal"]["DateTime"].stringValue
-        arrivalTime = data["FlightStatusResource"]["Flights"]["Flight"]["Arrival"]["ScheduledTimeLocal"]["DateTime"].stringValue
+        departureTime = data["Departure"]["ScheduledTimeLocal"]["DateTime"].stringValue
+        arrivalTime = data["Arrival"]["ScheduledTimeLocal"]["DateTime"].stringValue
         
-        originAirport = data["FlightStatusResource"]["Flights"]["Flight"]["Departure"]["AirportCode"].stringValue
-        destinationAirport = data["FlightStatusResource"]["Flights"]["Flight"]["Arrival"]["AirportCode"].stringValue
+        originAirport = data["Departure"]["AirportCode"].stringValue
+        destinationAirport = data["Arrival"]["AirportCode"].stringValue
+        
+        favorite = false
     }
 }

@@ -31,4 +31,9 @@ extension AirportsViewController: MKMapViewDelegate {
         return view
         
     }
+    
+    func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped: UIControl) {
+        selectedAirport = annotationView.annotation as? Airport
+        performSegue(withIdentifier: "toAirportInformation", sender: self)
+    }
 }

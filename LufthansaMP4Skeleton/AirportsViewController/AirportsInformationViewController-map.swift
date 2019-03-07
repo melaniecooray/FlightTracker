@@ -1,5 +1,5 @@
 //
-//  FlightInformationViewController-map.swift
+//  AirportsInformationViewController-map.swift
 //  LufthansaMP4Skeleton
 //
 //  Created by Melanie Cooray on 3/5/19.
@@ -9,9 +9,9 @@
 import UIKit
 import MapKit
 
-extension FlightInformationViewController: MKMapViewDelegate {
+extension AirportsInformationViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        print("In MKMapViewDelegate")
+        //print("In MKMapViewDelegate")
         guard let annotation = annotation as? Airport else {
             return nil
         }
@@ -21,7 +21,7 @@ extension FlightInformationViewController: MKMapViewDelegate {
             dequeuedView.annotation = annotation
             view = dequeuedView
         } else {
-            print("Created a new view")
+            //print("Created a new view")
             //print(annotation.title)
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.canShowCallout = true
@@ -30,10 +30,5 @@ extension FlightInformationViewController: MKMapViewDelegate {
         }
         return view
         
-    }
-    
-    func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped: UIControl) {
-        selectedAirport = annotationView.annotation as? Airport
-        performSegue(withIdentifier: "specificAirport", sender: self)
     }
 }

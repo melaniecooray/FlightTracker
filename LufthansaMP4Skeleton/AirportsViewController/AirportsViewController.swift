@@ -11,18 +11,30 @@ import MapKit
 
 class AirportsViewController: UIViewController {
     
+    var loadingLabel: UILabel!
+    
     var mapView: MKMapView!
     var airports: [Airport] = []
+    var selectedAirport: Airport!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        showLoadingScreen()
+        loadAirports()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
-        loadAirports()
+    }
+    
+    func showLoadingScreen() {
+        loadingLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
+        loadingLabel.center = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
+        loadingLabel.text = "Loading..."
+        loadingLabel.textAlignment = .center
+        view.addSubview(loadingLabel)
     }
     
     func loadAirports() {
@@ -57,15 +69,9 @@ class AirportsViewController: UIViewController {
         self.mapView.setRegion(region, animated : true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let resultVC = segue.destination as? AirportsInformationViewController {
+            resultVC.airport = selectedAirport
+        }
     }
-    */
-
 }

@@ -11,8 +11,26 @@
     </dependencies>
     <scenes>
         <!--Favorites-->
+        <scene sceneID="VaN-q0-rtC">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vJM-1k-l4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="cyL-WC-aaE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="favorites" id="i2L-M3-gzj"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uzM-rl-psL">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="yV4-KL-xLT"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-322" y="1052"/>
+        </scene>
+        <!--Favorites-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="FavoritesViewController" customModule="LufthansaMP4Skeleton" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -21,10 +39,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorites" image="favorites" id="b2r-n8-Iia"/>
+                    <navigationItem key="navigationItem" id="hhf-A3-WqV"/>
+                    <connections>
+                        <segue destination="4Qm-fB-4UO" kind="show" identifier="toFavoriteFlight" id="0Si-rc-HTR"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-322" y="1088"/>
+            <point key="canvasLocation" x="574" y="1051"/>
         </scene>
         <!--Airports-->
         <scene sceneID="3xf-bJ-NhL">
@@ -39,17 +60,17 @@
                     <tabBarItem key="tabBarItem" title="Airports" image="airports" id="aTt-6J-VPj"/>
                     <navigationItem key="navigationItem" id="Knw-fr-pmk"/>
                     <connections>
-                        <segue destination="7uZ-ki-5bL" kind="show" id="Wzb-Sd-8II"/>
+                        <segue destination="7uZ-ki-5bL" kind="show" identifier="toAirportInformation" id="Wzb-Sd-8II"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZR-AC-I8L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="574" y="182"/>
         </scene>
-        <!--View Controller-->
+        <!--Airports Information View Controller-->
         <scene sceneID="YnG-WI-DFn">
             <objects>
-                <viewController id="7uZ-ki-5bL" sceneMemberID="viewController">
+                <viewController id="7uZ-ki-5bL" customClass="AirportsInformationViewController" customModule="LufthansaMP4Skeleton" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="egu-8J-kza">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,6 +112,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="RTB-m8-bdy"/>
                     </view>
+                    <connections>
+                        <segue destination="7uZ-ki-5bL" kind="show" identifier="specificAirport" id="0DX-bS-Ehf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8h-ju-Z8M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,7 +149,7 @@
                     <connections>
                         <segue destination="P0q-xU-nId" kind="relationship" relationship="viewControllers" id="r4k-Zn-gF8"/>
                         <segue destination="JAd-6s-knJ" kind="relationship" relationship="viewControllers" id="gsY-pK-oIs"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Mob-uI-Ohg"/>
+                        <segue destination="cyL-WC-aaE" kind="relationship" relationship="viewControllers" id="gEr-7F-U8R"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ch-7k-Gbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -155,4 +179,8 @@
         <image name="favorites" width="18.75" height="18.75"/>
         <image name="flightStatus" width="18.75" height="18.75"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0Si-rc-HTR"/>
+        <segue reference="0DX-bS-Ehf"/>
+    </inferredMetricsTieBreakers>
 </document>

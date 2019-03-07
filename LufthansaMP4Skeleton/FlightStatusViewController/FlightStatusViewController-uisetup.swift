@@ -11,12 +11,9 @@ import UIKit
 extension FlightStatusViewController {
     
     func initUI(){
-        image = UIImageView(frame: CGRect(x: -300, y: 500, width: 300, height: 200))
-        image.contentMode = .scaleAspectFit
-        image.image = UIImage(named: "plane")
-        view.addSubview(image)
         
-        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 139/255, alpha: 1)
+        //self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 139/255, alpha: 1)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "cloud.png")!)
         
         setupFlightNumber()
         setupDatePicker()
