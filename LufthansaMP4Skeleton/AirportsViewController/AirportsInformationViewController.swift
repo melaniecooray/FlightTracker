@@ -20,6 +20,12 @@ class AirportsInformationViewController: UIViewController {
     var departures: [Flight] = []
     var arrivals: [Flight] = []
     var toShow: [Flight] = []
+    
+    var selectedFlight: Flight!
+    
+    var loadingLabel: UILabel!
+    var loadingScreen: UIView!
+    var loadingText: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +45,10 @@ class AirportsInformationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.title = "\(airport.subtitle!)"
+        if loadingScreen != nil {
+            loadingScreen.removeFromSuperview()
+            loadingText.removeFromSuperview()
+        }
     }
     
     func createMap() {
@@ -65,6 +75,11 @@ class AirportsInformationViewController: UIViewController {
     }
 
     func getFlights(date: String) {
+        loadingLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
+        loadingLabel.center = CGPoint(x: view.frame.width/2, y: customSC.frame.maxY + 100)
+        loadingLabel.text = "Loading..."
+        loadingLabel.textAlignment = .center
+        view.addSubview(loadingLabel)
         LufthansaAPIClient.getAuthToken() {
             LufthansaAPIClient.getFlightsFrom(type: "departures", airportCode: "\(self.airport.title!)", currentDate: "\(date)") { flts in
                 //self.label.text = flt.timeStatus
@@ -76,6 +91,16 @@ class AirportsInformationViewController: UIViewController {
                     //print(self.toShow)
                 }
             }
+        }
+    }
+    
+    func segue() {
+        performSegue(withIdentifier: "toShowFlight", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let resultVC = segue.destination as? FlightInformationViewController {
+            resultVC.flight = selectedFlight
         }
     }
 }

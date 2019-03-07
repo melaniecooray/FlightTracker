@@ -95,8 +95,8 @@ class LufthansaAPIClient {
         }
     }
     
-    static func getLHAirports(completion: @escaping ([Airport]) -> ()) {
-        let requestURL = "https://api.lufthansa.com/v1/references/airports/?lang=en&limit=100&LHoperated=1"
+    static func getLHAirports(offset: Int, completion: @escaping ([Airport]) -> ()) {
+        let requestURL = "https://api.lufthansa.com/v1/references/airports/?lang=en&limit=100&offset=\(offset)&LHoperated=1"
         let parameters: HTTPHeaders = ["Accept":"application/json", "Authorization" : "Bearer \(self.authToken!)"]
         
         Alamofire.request(requestURL, headers: parameters).responseJSON { response in

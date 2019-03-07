@@ -62,7 +62,10 @@ class FlightInformationViewController: UIViewController {
         let count2 = count + 1
         UserDefaults.standard.set("LH\(flight.flightNumber!)", forKey: "\(count)")
         print("LH\(flight.flightNumber!)")
-        UserDefaults.standard.set(date!, forKey: "\(count2)")
+        date = flight.departureTime
+        let index2 = date.index(date.endIndex, offsetBy: -7)
+        let substring1 = date[...index2]
+        UserDefaults.standard.set(substring1, forKey: "\(count2)")
         print(date!)
         UserDefaults.standard.set(count2 + 1, forKey: "favoritesCount")
         print("Favorite!")
@@ -81,7 +84,7 @@ class FlightInformationViewController: UIViewController {
         let midPointlat = (flight.originAirportObject.latitude + flight.destinationAirportObject.latitude) / 2
         let midPointlong = (flight.originAirportObject.longitude + flight.destinationAirportObject.longitude) / 2
         let location = CLLocationCoordinate2D(latitude: midPointlat, longitude: midPointlong)
-        let region = MKCoordinateRegion(center: location, latitudinalMeters: 1000000, longitudinalMeters: 1000000)
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: 3000000, longitudinalMeters: 3000000)
         self.mapView.setRegion(region, animated : true)
     }
     

@@ -68,7 +68,7 @@ class FavoritesViewController: UIViewController {
             let flightNumber = UserDefaults.standard.string(forKey: "\(num2)")
             //print(flightNumber)
             let datte = UserDefaults.standard.string(forKey: "\(num1)")
-            //print(datte)
+            print(datte)
             LufthansaAPIClient.getAuthToken {
                 LufthansaAPIClient.getFlightStatus(flightNum: flightNumber!, date: datte!) { flt in
                     LufthansaAPIClient.getAircraft(type: flt.aircraft) { air in

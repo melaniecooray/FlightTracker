@@ -31,6 +31,7 @@ extension FavoritesViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedFlight = favorites[indexPath[1]]
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "toFavoriteFlight", sender: self)
     }
 }

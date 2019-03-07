@@ -16,7 +16,6 @@ class AirportsViewController: UIViewController {
     var mapView: MKMapView!
     var airports: [Airport] = []
     var selectedAirport: Airport!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +38,24 @@ class AirportsViewController: UIViewController {
     
     func loadAirports() {
         LufthansaAPIClient.getAuthToken {
-            LufthansaAPIClient.getLHAirports() { lst in
+            LufthansaAPIClient.getLHAirports(offset: 0) { lst in
                 for i in 0..<lst.count {
                     self.airports.append(lst[i])
                     //print(lst[i].title)
                 }
-                self.createMap()
-                self.centerMap()
-                self.createAnnotations()
+                LufthansaAPIClient.getLHAirports(offset: 100) { lst2 in
+                    for i in 0..<lst2.count {
+                        self.airports.append(lst2[i])
+                    }
+                    LufthansaAPIClient.getLHAirports(offset: 200) { lst3 in
+                        for i in 0..<lst3.count {
+                            self.airports.append(lst3[i])
+                        }
+                        self.createMap()
+                        self.centerMap()
+                        self.createAnnotations()
+                    }
+                }
             }
         }
     }

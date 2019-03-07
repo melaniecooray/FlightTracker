@@ -11,7 +11,7 @@ import UIKit
 class FlightStatusViewController: UIViewController {
     
     var image: UIImageView!
-    var label: UILabel!
+    var titleLabel: UILabel!
     var button: UIButton!
     
     var flightNumberTextField: UITextField!
