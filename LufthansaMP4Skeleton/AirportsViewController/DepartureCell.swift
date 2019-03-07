@@ -18,12 +18,12 @@ class DepartureCell : UITableViewCell {
         
         flightNum = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: contentView.frame.height))
         flightNum.center = CGPoint(x: 75, y: contentView.frame.height/2)
-        flightNum.font = UIFont(name: "Copperplate", size: 15)
+        flightNum.font = UIFont(name: "Avenir-Light", size: 15)
         contentView.addSubview(flightNum)
         
         flightTime = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: contentView.frame.height))
         flightTime.center = CGPoint(x: 400, y: contentView.frame.height/2)
-        flightTime.font = UIFont(name: "Copperplate", size: 15)
+        flightTime.font = UIFont(name: "Avenir-Light", size: 15)
         contentView.addSubview(flightTime)
     }
     
